@@ -14,8 +14,8 @@ app.post("/issues", async (req, res) =>
 {
     try
     {
-        const { project, issue_description, } = req.body;
-        const newIssue = await pool.query("INSERT INTO tracker (project, issue_description) VALUES($1,$2)", [project, issue_description]);
+        const { project, issue_description, resolution, added_by, validated } = req.body;
+        const newIssue = await pool.query("INSERT INTO tracker (project, issue_description,resolution,added_by, validated) VALUES($1,$2,$3,$4,$5)", [project, issue_description, resolution, added_by, validated]);
 
         res.json(newIssue);
 
