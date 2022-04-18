@@ -1,14 +1,20 @@
 import React, { Fragment } from 'react';
-
-import logo from './logo.svg';
-
 import './App.css';
+
+//Components
+import SearchIssue from './components/SearchIssue';
 
 function App()
 {
+
   return (
-    <Fragment></Fragment>
+
+    <Fragment>
+      <SearchIssue />
+    </Fragment>
   );
-}
+
+
+};
 
 export default App;
