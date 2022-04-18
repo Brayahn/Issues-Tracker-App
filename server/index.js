@@ -87,6 +87,21 @@ app.put("/issue/:id", async (req, res) =>
     }
 })
 
+//delete an issue 
+app.delete("/issues/:id", async (req, res) =>
+{
+    try
+    {
+        const { id } = req.params;
+        const deleteIssue = await pool.query("DELETE FROM tracker where tracker_id = $1", [id]);
+
+        res.json("Record Deleted")
+    } catch (err)
+    {
+        console.error(err.message);
+    }
+})
+
 
 //server run 
 app.listen(5000, () =>
