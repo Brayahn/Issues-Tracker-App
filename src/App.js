@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import './App.css';
 
 //Components
-import SearchIssue from './components/SearchIssue';
+import NewIssue from './components/NewIssue';
 
 function App()
 {
@@ -12,7 +12,7 @@ function App()
     <Fragment>
 
       <div className='container'>
-        <SearchIssue />
+        <NewIssue />
       </div>
 
     </Fragment>
