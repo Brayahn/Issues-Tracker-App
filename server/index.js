@@ -10,35 +10,16 @@ app.use(express.json()); //req.body
 
 //my routes
 //create
-app.post("/issues", async (req, res) =>
+app.post("/newissues", async (req, res) =>
 {
     try
     {
         const { project, issue_description, resolution, added_by, validated } = req.body;
-        const newIssue = await pool.query("INSERT INTO tracker (project, issue_description,resolution,added_by, validated) VALUES($1,$2,$3,$4,$5)", [project, issue_description, resolution, added_by, validated]);
+        const newIssue = await pool.query("INSERT INTO tracker (project, issue_description,resolution,added_by, validated) VALUES($1,$2,$3,$4,$5) RETURNING *", [project, issue_description, resolution, added_by, validated]);
 
-        res.json(newIssue);
+        res.json(newIssue.rows[0]);
 
         /*
-
-       
-
-  const { issue_description } = req.body.issue_description;
-        const { resolution } = req.body.resolution;
-        const { Added_by } = req.body.Added_by;
-        const { validated } = req.body.validated;
-
-
-
-
-        "INSERT INTO mtissues (project) VALUES($1)", [project],
-                    "INSERT INTO mtissues (issue_description) VALUES($1)", [issue_description],
-                    "INSERT INTO mtissues (resolution) VALUES($1)", [resolution],
-                    "INSERT INTO mtissues (Added_by) VALUES($1)", [Added_by],
-                    "INSERT INTO mtissues (validated) VALUES($1)", [validated]
-
-
-
                     {
     "project": "MTNU",
     "issue_description": "Err logging into the Webcare",
@@ -54,6 +35,37 @@ app.post("/issues", async (req, res) =>
         console.error(err.message);
     }
 });
+
+
+//update
+
+
+//All Issues
+app.get("/issues", async (req, res) =>
+{
+    try
+    {
+        const allissues = await pool.query("SELECT * FROM tracker");
+        res.json(allissues.rows);
+    } catch (err)
+    {
+        console.error(err.message)
+    }
+});
+
+
+//Searching for a specific issue 
+app.get("/issue/:id", async (req, res) =>
+{
+    try
+    {
+        console.log(req.params);
+    } catch (err)
+    {
+        console.error(err.message);
+    }
+})
+
 
 
 
