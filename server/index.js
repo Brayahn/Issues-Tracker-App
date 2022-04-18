@@ -70,18 +70,18 @@ app.get("/issues/:id", async (req, res) =>
 
 
 //updating an issue
-app.put("/issue/:id", async (req, res) =>
+app.put("/issue/:id", async (req, res) => 
 {
-    try
+    try  
     {
         const { id } = req.params;
-        const { project } = req.body;
+        const { project, issue_description, resolution, added_by, validated } = req.body;
         const updateIssue = await pool.query(
-            "UPDATE tracker SET project = $1 WHERE tracker_id = $2", [project, id]
+            "UPDATE tracker SET (project, issue_description, resolution, added_by, validated)  = ($1, $2, $3, $4, $5) WHERE tracker_id = $6", [project, issue_description, resolution, added_by, validated, id]
         );
 
         res.json("Issue was updated");
-    } catch (err)
+    } catch (err)  
     {
         console.error(err.message);
     }
