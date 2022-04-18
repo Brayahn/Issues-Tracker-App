@@ -10,7 +10,11 @@ function App()
   return (
 
     <Fragment>
-      <SearchIssue />
+
+      <div className='container'>
+        <SearchIssue />
+      </div>
+
     </Fragment>
   );
 
