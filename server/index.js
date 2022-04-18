@@ -41,7 +41,7 @@ app.post("/newissues", async (req, res) =>
 
 
 //All Issues
-app.get("/issues", async (req, res) =>
+app.get("/issues", async (_req, res) =>
 {
     try
     {
@@ -54,12 +54,17 @@ app.get("/issues", async (req, res) =>
 });
 
 
+
 //Searching for a specific issue 
-app.get("/issue/:id", async (req, res) =>
+app.get("/issues/:id", async (req, res) =>
 {
     try
     {
-        console.log(req.params);
+        //console.log(req.params);
+        const { id } = req.params;
+        const issue = await pool.query("SELECT * FROM tracker WHERE tracker_id = $1 ", [id]);
+
+        res.json(issue.rows[0]);
     } catch (err)
     {
         console.error(err.message);
