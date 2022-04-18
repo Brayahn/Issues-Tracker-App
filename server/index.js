@@ -37,9 +37,6 @@ app.post("/newissues", async (req, res) =>
 });
 
 
-//update
-
-
 //All Issues
 app.get("/issues", async (_req, res) =>
 {
@@ -72,8 +69,23 @@ app.get("/issues/:id", async (req, res) =>
 });
 
 
+//updating an issue
+app.put("/issue/:id", async (req, res) =>
+{
+    try
+    {
+        const { id } = req.params;
+        const { project } = req.body;
+        const updateIssue = await pool.query(
+            "UPDATE tracker SET project = $1 WHERE tracker_id = $2", [project, id]
+        );
 
-
+        res.json("Issue was updated");
+    } catch (err)
+    {
+        console.error(err.message);
+    }
+})
 
 
 //server run 
