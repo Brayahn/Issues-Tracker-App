@@ -19,9 +19,12 @@ const NewIssue = () =>
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
-            });
-            console.log(response);
 
+            },
+            );
+
+            //console.log(response);
+            window.location = "/";
         } catch (err)
         {
             console.error(err.message)
@@ -35,12 +38,16 @@ const NewIssue = () =>
             <h2 className="text-center mt-2"> Issues Tracker </h2>
 
             <form onSubmit={onSubmitForm}>
+
+
                 <div class="mb-3 ">
                     <input type='text'
                         className="form-control"
                         placeholder="Project Name"
                         value={project}
                         onChange={e => setProject(e.target.value)}
+
+
                     />
                 </div>
                 <div class="mb-3 ">

@@ -5,6 +5,23 @@ const ListIssues = () =>
 
     const [issues, setIssues] = useState([]);
 
+    //delete function
+    const deleteIssue = async (id) =>
+    {
+        try
+        {
+            const deleteIssue = await fetch(`http://localhost:5000/issues/${id}`,
+                { method: "DELETE" });
+
+            //console.log(deleteIssue);
+            setIssues(issues.filter(issue => issue.tracker_id !== id));
+        } catch (err)
+        {
+            console.error(err.message);
+        }
+    }
+
+    //List all 
     const getIssues = async () =>
     {
         try
@@ -43,16 +60,22 @@ const ListIssues = () =>
                 </thead>
                 <tbody>
                     {issues.map(issue => (
-                        <tr>
+                        <tr key={issue.tracker_id}>
                             <td> {issue.project}</td>
                             <td> {issue.issue_description}</td>
                             <td> {issue.resolution}</td>
                             <td> {issue.added_by}</td>
                             <td> {issue.validated}</td>
-                            <td> Edit</td>
 
-                            
-                            <td> <button className="btn btn-danger"> Delete </button></td>
+                            {/*Edit Button*/}
+                            <td> <button className="btn btn-warning"> Edit </button></td>
+
+                            {/*Delete Button*/}
+                            <td> <button
+                                className="btn btn-danger"
+                                onClick={() => deleteIssue(issue.tracker_id)}>
+                                Delete </button></td>
+
                         </tr>
 
                     ))}
