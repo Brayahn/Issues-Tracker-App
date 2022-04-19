@@ -19,17 +19,6 @@ app.post("/newissues", async (req, res) =>
 
         res.json(newIssue.rows[0]);
 
-        /*
-                    {
-    "project": "MTNU",
-    "issue_description": "Err logging into the Webcare",
-    "resolution": "Core Restart",
-    "Added_by": "Claud",
-    "validated": "Yes"
-    }
-    
-         */
-
     } catch (err) 
     {
         console.error(err.message);

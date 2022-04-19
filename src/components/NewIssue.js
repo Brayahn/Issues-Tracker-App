@@ -1,12 +1,13 @@
 import React, { Fragment, useState } from "react";
 
+
 const NewIssue = () =>
 {
-    const [project, setProject] = useState("Project Name");
-    const [issue_description, setIssueDescription] = useState("Issue Description");
-    const [resolution, setResolution] = useState("Resolution Measures");
-    const [added_by, setAddedBy] = useState("Added By: ");
-    const [validated, setValidated] = useState("Validated");
+    const [project, setProject] = useState("");
+    const [issue_description, setIssueDescription] = useState("");
+    const [resolution, setResolution] = useState("");
+    const [added_by, setAddedBy] = useState("");
+    const [validated, setValidated] = useState("");
 
     const onSubmitForm = async (e) =>
     {
@@ -20,6 +21,7 @@ const NewIssue = () =>
                 body: JSON.stringify(body)
             });
             console.log(response);
+
         } catch (err)
         {
             console.error(err.message)
@@ -29,40 +31,55 @@ const NewIssue = () =>
 
     return (
         <Fragment>
-            <h1 className="text-center mt-5"> Mobile Technologies Issues Tracker </h1>
-            <form className="d-flex " onSubmit={onSubmitForm}>
 
-                <input type='text'
-                    className="form-control"
-                    value={project}
-                    onChange={e => setProject(e.target.value)}
-                />
+            <h2 className="text-center mt-2"> Issues Tracker </h2>
 
-                <input type='text'
-                    className="form-control"
-                    value={issue_description}
-                    onChange={e => setIssueDescription(e.target.value)}
-                />
+            <form onSubmit={onSubmitForm}>
+                <div class="mb-3 ">
+                    <input type='text'
+                        className="form-control"
+                        placeholder="Project Name"
+                        value={project}
+                        onChange={e => setProject(e.target.value)}
+                    />
+                </div>
+                <div class="mb-3 ">
+                    <textarea
+                        className="form-control"
+                        placeholder="Describe Issue"
+                        rows="3"
+                        value={issue_description}
+                        onChange={e => setIssueDescription(e.target.value)}
+                    /></div>
 
-                <input type='text'
-                    className="form-control"
-                    value={resolution}
-                    onChange={e => setResolution(e.target.value)}
-                />
+                <div class="mb-3 ">
+                    <textarea
+                        className="form-control"
+                        placeholder="Resolution"
+                        rows="3"
+                        value={resolution}
+                        onChange={e => setResolution(e.target.value)}
+                    />
+                </div>
 
-                <input type='text'
-                    className="form-control"
-                    value={added_by}
-                    onChange={e => setAddedBy(e.target.value)}
-                />
+                <div class="mb-3 ">
+                    <input type='text'
+                        className="form-control"
+                        placeholder="Added By"
+                        value={added_by}
+                        onChange={e => setAddedBy(e.target.value)}
+                    />
+                </div>
 
-                <input type='text'
-                    className="form-control"
-                    value={validated}
-                    onChange={e => setValidated(e.target.value)}
-                />
-
-                <button className="btn btn-success"> Search Issue </button>
+                <div class="mb-3 ">
+                    <input type='text'
+                        className="form-control"
+                        placeholder="Validated? Yes / No"
+                        value={validated}
+                        onChange={e => setValidated(e.target.value)}
+                    />
+                </div>
+                <button className="btn btn-success"> New Issue </button>
             </form>
 
         </Fragment>
