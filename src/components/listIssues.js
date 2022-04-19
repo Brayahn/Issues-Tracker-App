@@ -3,6 +3,8 @@ import React, { Fragment, useEffect, useState } from "react";
 const ListIssues = () =>
 {
 
+    const [issues, setIssues] = useState([]);
+
     const getIssues = async () =>
     {
         try
@@ -10,7 +12,8 @@ const ListIssues = () =>
             const response = await fetch("http://localhost:5000/issues/");
             const jsonData = await response.json();
 
-            console.log(jsonData);
+            setIssues(jsonData);
+            // console.log(jsonData);
         } catch (err)
         {
             console.error(err.message);
@@ -20,7 +23,10 @@ const ListIssues = () =>
     useEffect(() =>
     {
         getIssues();
-    })
+    }, []);
+
+    console.log(issues);
+
     return (
         <Fragment>  <h3 className="text-center mt-2"> All Issues </h3>
 
@@ -36,14 +42,21 @@ const ListIssues = () =>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* 
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr>
-                   
-                    */}
+                    {issues.map(issue => (
+                        <tr>
+                            <td> {issue.project}</td>
+                            <td> {issue.issue_description}</td>
+                            <td> {issue.resolution}</td>
+                            <td> {issue.added_by}</td>
+                            <td> {issue.validated}</td>
+                            <td> Edit</td>
+
+                            
+                            <td> <button className="btn btn-danger"> Delete </button></td>
+                        </tr>
+
+                    ))}
+
                 </tbody>
             </table>
 
