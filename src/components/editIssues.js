@@ -22,8 +22,9 @@ const EditIsssues = ({ issue }) =>
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
-            })
+            });
             console.log(response);
+            window.location = "/";
         } catch (err)
         {
             console.error(err.message);
@@ -42,14 +43,27 @@ const EditIsssues = ({ issue }) =>
         </button>
 
         {/*  Modal to capture specific ID */}
-        <div class="modal" id={`id${issue.tracker_id}`}>
+        <div class="modal" id={`id${issue.tracker_id}`}
+            onClick={() => setProject(issue.project) &
+                setIssueDescription(issue.issue_description) &
+                setAddedBy(issue.added_by) &
+                setResolution(issue.resolution) &
+                setValidated(issue.validated)
+            }
+        >
             <div class="modal-dialog">
                 <div class="modal-content">
 
 
                     <div class="modal-header">
                         <h4 class="modal-title">Edit Issue </h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            onClick={() => setProject(issue.project)}
+                        >
+                            &times;
+                        </button>
                     </div>
 
 
@@ -98,7 +112,11 @@ const EditIsssues = ({ issue }) =>
                             onClick={e => updateProject(e)}>
 
                             Edit</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button"
+                            class="btn btn-danger"
+                            data-dismiss="modal"
+                            onClick={() => setProject(issue.project)}
+                        >Close</button>
                     </div>
 
                 </div>
@@ -107,7 +125,7 @@ const EditIsssues = ({ issue }) =>
 
 
 
-    </Fragment>
+    </Fragment >
 
 
 
