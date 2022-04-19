@@ -46,9 +46,8 @@ const NewIssue = () =>
                         placeholder="Project Name"
                         value={project}
                         onChange={e => setProject(e.target.value)}
-
-
                     />
+
                 </div>
                 <div class="mb-3 ">
                     <textarea

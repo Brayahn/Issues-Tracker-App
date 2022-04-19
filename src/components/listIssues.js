@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import EditIsssues from "./EditIssues";
 
 const ListIssues = () =>
 {
@@ -14,6 +15,8 @@ const ListIssues = () =>
                 { method: "DELETE" });
 
             //console.log(deleteIssue);
+
+            //realtime data
             setIssues(issues.filter(issue => issue.tracker_id !== id));
         } catch (err)
         {
@@ -68,7 +71,7 @@ const ListIssues = () =>
                             <td> {issue.validated}</td>
 
                             {/*Edit Button*/}
-                            <td> <button className="btn btn-warning"> Edit </button></td>
+                            <td> < EditIsssues issue={issue}/> </td>
 
                             {/*Delete Button*/}
                             <td> <button
