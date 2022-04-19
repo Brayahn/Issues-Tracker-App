@@ -3,6 +3,11 @@ import React, { Fragment, useState } from "react";
 const EditIsssues = ({ issue }) =>
 {
     const [project, setProject] = useState(issue.project);
+    const [issue_description, setIssueDescription] = useState(issue.issue_description);
+    const [resolution, setResolution] = useState(issue.resolution);
+    const [added_by, setAddedBy] = useState(issue.added_by);
+    const [validated, setValidated] = useState(issue.validated);
+
     console.log(issue);
     return <Fragment>
 
@@ -39,19 +44,23 @@ const EditIsssues = ({ issue }) =>
                             className="form-control"
                             placeholder="Issue Description"
                             rows="3"
+                            value={issue_description}
                         /><br />
                         <textarea
                             className="form-control"
                             placeholder="Resolution"
                             rows="3"
+                            value={resolution}
                         /><br />
                         <input type='text'
                             className="form-control"
                             placeholder="Added By"
+                            value={added_by}
                         /><br />
                         <input type='text'
                             className="form-control"
                             placeholder="Validated"
+                            value={validated}
                         />
                     </div>
 
