@@ -9,8 +9,28 @@ const EditIsssues = ({ issue }) =>
     const [validated, setValidated] = useState(issue.validated);
 
     console.log(issue);
-    return <Fragment>
 
+
+    //edit fields function
+    const updateProject = async (e) =>
+    {
+        e.preventDefault();
+        try
+        {
+            const body = { project, issue_description, resolution, added_by, validated };
+            const response = await fetch(`http://localhost:5000/issue/${issue.tracker_id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            })
+            console.log(response);
+        } catch (err)
+        {
+            console.error(err.message);
+        }
+    }
+
+    return <Fragment>
 
         <button type="button" class="btn btn-warning"
             data-toggle="modal"
@@ -38,6 +58,7 @@ const EditIsssues = ({ issue }) =>
                             className="form-control"
                             placeholder="Project Name"
                             value={project}
+                            onChange={e => setProject(e.target.value)}
                         />
                         <br />
                         <textarea
@@ -45,29 +66,38 @@ const EditIsssues = ({ issue }) =>
                             placeholder="Issue Description"
                             rows="3"
                             value={issue_description}
+                            onChange={e => setIssueDescription(e.target.value)}
                         /><br />
                         <textarea
                             className="form-control"
                             placeholder="Resolution"
                             rows="3"
                             value={resolution}
+                            onChange={e => setResolution(e.target.value)}
                         /><br />
                         <input type='text'
                             className="form-control"
                             placeholder="Added By"
                             value={added_by}
+                            onChange={e => setAddedBy(e.target.value)}
                         /><br />
                         <input type='text'
                             className="form-control"
                             placeholder="Validated"
                             value={validated}
+                            onChange={e => setValidated(e.target.value)}
                         />
                     </div>
 
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Edit</button>
+                        <button type="button"
+                            class="btn btn-warning"
+                            data-dismiss="modal"
+                            onClick={e => updateProject(e)}>
+
+                            Edit</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
 
