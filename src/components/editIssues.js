@@ -6,12 +6,18 @@ const EditIsssues = ({ issue }) =>
     console.log(issue);
     return <Fragment>
 
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+
+        <button type="button" class="btn btn-warning"
+            data-toggle="modal"
+            data-target={`#id${issue.tracker_id}`}>
+            {/*  Modal to capture specific ID (above)*/}
+
             Edit
+
         </button>
 
-
-        <div class="modal" id="myModal">
+        {/*  Modal to capture specific ID */}
+        <div class="modal" id={`id${issue.tracker_id}`}>
             <div class="modal-dialog">
                 <div class="modal-content">
 
