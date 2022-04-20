@@ -11,7 +11,7 @@ function SearchIssues()
         e.preventDefault();
         try
         {
-            const response = await fetch(`http://localhost:5000//search/?keyword=${searchterm}`);
+            const response = await fetch(`http://localhost:5000/search/?searchterm=${searchterm}`);
             const parseResponse = await response.json();
 
             console.log(parseResponse)
@@ -21,7 +21,7 @@ function SearchIssues()
         }
     }
     return (<Fragment>
-        <form onSubmit={onSubmitForm}>
+        <form className="d-flex" onSubmit={onSubmitForm}>
             <input
                 type="text"
                 name="search_box"

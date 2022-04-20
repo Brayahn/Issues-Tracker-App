@@ -42,15 +42,15 @@ app.get("/issues", async (_req, res) =>
 
 
 //Searching for a specific issue 
-app.get("/search/:keyword", async (req, res) =>
+app.get("/search", async (req, res) =>
 {
     try
     {
 
         //console.log(req.params);
-        const { keyword } = req.params;
+        const { searchterm } = req.query;
         const issue = await pool.query("SELECT * FROM tracker WHERE project || ' ' ||issue_description ||' ' || resolution ||' ' || added_by ILIKE $1",
-            [`%${keyword}%`]);
+            [`%${searchterm}%`]);
 
         res.json(issue.rows);
     } catch (err)
