@@ -71,7 +71,7 @@ const ListIssues = () =>
                             <td> {issue.validated}</td>
 
                             {/*Edit Button*/}
-                            <td> < EditIsssues issue={issue}/> </td>
+                            <td> < EditIsssues issue={issue} /> </td>
 
                             {/*Delete Button*/}
                             <td> <button
