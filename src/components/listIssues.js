@@ -1,14 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditIsssues from "./EditIssues";
-
-
+import SearchIssues from "./SearchIssues";
 
 const ListIssues = () =>
 {
-
-    const [project, setProject] = useState([]);
-    const [query, SetQuery] = useState("");
-
 
     const [issues, setIssues] = useState([]);
 
@@ -56,7 +51,7 @@ const ListIssues = () =>
     return (
         <Fragment>  <h3 className="text-center mt-2"> All Issues </h3>
 
-
+            <SearchIssues />
             <table class="table mt-5 text-center" >
                 <thead>
                     <tr>

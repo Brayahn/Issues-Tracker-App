@@ -42,15 +42,17 @@ app.get("/issues", async (_req, res) =>
 
 
 //Searching for a specific issue 
-app.get("/issues/:id", async (req, res) =>
+app.get("/search/:keyword", async (req, res) =>
 {
     try
     {
-        //console.log(req.params);
-        const { id } = req.params;
-        const issue = await pool.query("SELECT * FROM tracker WHERE tracker_id = $1 ", [id]);
 
-        res.json(issue.rows[0]);
+        //console.log(req.params);
+        const { keyword } = req.params;
+        const issue = await pool.query("SELECT * FROM tracker WHERE project || ' ' ||issue_description ||' ' || resolution ||' ' || added_by ILIKE $1",
+            [`%${keyword}%`]);
+
+        res.json(issue.rows);
     } catch (err)
     {
         console.error(err.message);
