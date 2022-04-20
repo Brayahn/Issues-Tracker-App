@@ -47,6 +47,7 @@ const ListIssues = () =>
     }, []);
 
     console.log(issues);
+  
 
     return (
         <Fragment>  <h3 className="text-center mt-2"> All Issues </h3>
