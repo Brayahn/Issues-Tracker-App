@@ -60,6 +60,7 @@ function SearchIssues()
 
             </tbody>
         </table>
+        {result.length == 0 && <p>No Results Found</p>}
 
     </Fragment>
     );
