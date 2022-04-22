@@ -47,12 +47,15 @@ const ListIssues = () =>
     }, []);
 
     console.log(issues);
-  
+
 
     return (
-        <Fragment>  <h3 className="text-center mt-2"> All Issues </h3>
+        <Fragment>
 
             <SearchIssues />
+
+            <h3 className="text-center mt-2"> All Issues </h3>
+
             <table class="table mt-5 text-center" >
                 <thead>
                     <tr>

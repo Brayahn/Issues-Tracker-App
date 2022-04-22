@@ -45,7 +45,7 @@ const NewIssue = () =>
 
                 <div class="input-group mb-3">
                     <label class="input-group-text" >Project</label>
-                    <select class="form-select" onChange={e => setProject(e.target.value)}>
+                    <select required class="form-select" onChange={e => setProject(e.target.value)}>
                         <option selected >Choose...</option>
                         <option value="BTCOBHR">BTCOBHR</option>
                         <option value="GULFTHA">GULFTHA</option>
@@ -69,7 +69,7 @@ const NewIssue = () =>
                         <option value="ZAINBHR">ZAINBHR</option>
                         <option value="ZAINIRQ">ZAINIRQ</option>
                     </select>
-                </div>  
+                </div>
 
 
 
@@ -80,6 +80,7 @@ const NewIssue = () =>
                         rows="3"
                         value={issue_description}
                         onChange={e => setIssueDescription(e.target.value)}
+                        required
                     /></div>
 
                 <div class="mb-3 ">
@@ -98,17 +99,19 @@ const NewIssue = () =>
                         placeholder="Added By"
                         value={added_by}
                         onChange={e => setAddedBy(e.target.value)}
+                        required
                     />
                 </div>
 
-                <div class="mb-3 ">
-                    <input type='text'
-                        className="form-control"
-                        placeholder="Validated? Yes / No"
-                        value={validated}
-                        onChange={e => setValidated(e.target.value)}
-                    />
+
+                <div class="input-group mb-3">
+                    <select class="form-select" onChange={e => setValidated(e.target.value)} >
+                        <option selected >Validated?</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                 </div>
+
                 <button className="btn btn-success"> New Issue </button>
             </form>
 

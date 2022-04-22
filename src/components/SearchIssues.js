@@ -9,7 +9,7 @@ function SearchIssues()
 
     const onSubmitForm = async (e) =>
     {
-        e.preventDefault();
+        e.preventDefault(); 
         try
         {
             const response = await fetch(`http://localhost:5000/search/?searchterm=${searchterm}`);
@@ -25,11 +25,13 @@ function SearchIssues()
     return (<Fragment>
         <form className="d-flex" onSubmit={onSubmitForm}>
             <input
+                className="text-align right"
                 type="text"
                 name="search_box"
                 placeholder="Search ..."
                 value={searchterm}
                 onChange={e => setSearchTerm(e.target.value)}
+
             />
             <button className="btn btn-success">Search</button>
 
