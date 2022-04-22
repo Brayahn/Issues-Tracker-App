@@ -3,9 +3,9 @@ import './App.css';
 
 
 
-//Components
+//Components--
 import NewIssue from './components/NewIssue';
-import ListIssues from './components/ListIssues';
+import ListIssues from './components/listIssues';
 
 function App()
 {
