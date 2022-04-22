@@ -48,32 +48,28 @@ const NewIssue = () =>
                     <select class="form-select" onChange={e => setProject(e.target.value)}>
                         <option selected >Choose...</option>
                         <option value="BTCOBHR">BTCOBHR</option>
-                        <option value="">GULFTHA</option>
-                        <option value="">KORIRQ</option>
-                        <option value="">LYCABHR</option>
-                        <option value="">MOOVBEN</option>
-                        <option value="">MTNA</option>
-                        <option value="">MTNB</option>
-                        <option value="">MTNC</option>
-                        <option value="">MTNCB</option>
-                        <option value="">MTNG</option>
-                        <option value="">MTNSS</option>
-                        <option value="">MTNU</option>
-                        <option value="">MTNZ</option>
-                        <option value="">ROHAFG</option>
-                        <option value="">SAPSAU</option>
-                        <option value={project}>SGTLSGP</option>
-                        <option value={project}>SMRTPHL</option>
-                        <option value={project}>VIVABHR</option>
-                        <option value={project}>VDCCOD</option>
-                        <option value={project}>ZAINBHR</option>
-                        <option value={project}>ZAINIRQ</option>
+                        <option value="GULFTHA">GULFTHA</option>
+                        <option value="KORIRQ">KORIRQ</option>
+                        <option value="LYCABHR">LYCABHR</option>
+                        <option value="MOOVBEN">MOOVBEN</option>
+                        <option value="MTNA">MTNA</option>
+                        <option value="MTNB">MTNB</option>
+                        <option value="MTNC">MTNC</option>
+                        <option value="MTNCB">MTNCB</option>
+                        <option value="MTNG">MTNG</option>
+                        <option value="MTNSS">MTNSS</option>
+                        <option value="MTNU">MTNU</option>
+                        <option value="MTNZ">MTNZ</option>
+                        <option value="ROHAFG">ROHAFG</option>
+                        <option value="SAPSAU">SAPSAU</option>
+                        <option value="SGTLSGP">SGTLSGP</option>
+                        <option value="SMRTPHL">SMRTPHL</option>
+                        <option value="VIVABHR">VIVABHR</option>
+                        <option value="VDCCOD">VDCCOD</option>
+                        <option value="ZAINBHR">ZAINBHR</option>
+                        <option value="ZAINIRQ">ZAINIRQ</option>
                     </select>
-                </div>
-
-
-
-
+                </div>  
 
 
 
